@@ -24,7 +24,7 @@ var logSchema = new Schema({
 
 // this will be our data base's data structure 
 var userSchema = new Schema({    
-  userId: {
+  userName: {
     type:String,
     unique:true
     }
