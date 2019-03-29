@@ -46,70 +46,42 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 
 //post request from form in Home.js
-app.post('/api/shorturl/new', function(req,res) {
+app.post('/api/exercise/new-user', function(req,res) {
 
-  //get the url from the form
-  var newUrl=req.body.url;
+	//check validity of username
+	//if invalid, return err
+	//check if userName exists
+	//return err if it does
+	//add userName to database
+	//return unique user key
 
-  //check if the url is in the right format
-  var urlRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#()?&//=]*)/;
+	var newUser=req.body.userName;
 
-  console.log('checking URL for validity');
-  if (!urlRegex.test(newUrl)) {
-    //send error message if invalid string
-    res.send({error: "invalid URL"});
-  } else {
-    //check if the url is in the database already
-    console.log('URL is valid');
-    console.log('checking if URL already exist in database');
-    var findExistingEntry = Links.findOne(
-        { original_url: newUrl },
-        { original_url: 1, short_url: 1}
-    ).then(function(data) {
-      //return the shortened URL if already in collection
-      if (data) {
-        console.log('already here');
-        console.log(data);
-        console.log(data.short_url);
-        return res.send({original_url: data.original_url, short_url: data.short_url});
-      } else {
+	if (newUser.length > 15) {
+		res.send({error: 'username too long'});
+	}
 
-        console.log('did not find URL in database');
-        console.log('checking document count');
-        //check the short_url count in the database
-        var documentCount= Links.find().countDocuments().then((data)=>{
+	var findExistingUser=Users.findOne(
+		{userName: newUser}
+	).then(function(data) {
+		if (data) {
+			return res.send({error: "username taken"});
+		}
+		let randomKey=generate()+generate()+generate();
+		var newUserToAdd = new Users({
+			userName: newUser,
+			passkey: randomKey
+		});
 
-          console.log('current document count is: ' + data);
-          console.log('making new object from Schema');
-
-          //generate random number 1-100
-          var newId=Math.floor((Math.random() * 100) + 1);
-          //append doc number to end of newId
-          newId=parseInt(""+newId+data);
-
-
-          //make the object to store
-          var urlToShorten = new Links({
-            original_url: newUrl, 
-            short_url:newId
-          });
-
-
-          console.log('saving new object');
-
-          //save the new object
-          urlToShorten.save((err, response) => {
-            if (err) {
-              console.log("error to databse: " + err);
-              return res.json({ success: false, error: err });
-            }
-            console.log('success, response is: ' + response);
-            return res.send(response);
-          });
-        });
-      }
-    });
-  }
+		newUserToAdd.save((err, response) => {
+        if (err) {
+			console.log("error to databse: " + err);
+			return res.json({ success: false, error: err });
+        }
+        console.log('success, response is: ' + response);
+        return res.send(response);
+      });
+	});
 });
 
 
@@ -159,3 +131,24 @@ app.get("*", (req, res) => {
 
 // launch our backend into a port
 app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+
+//generates random string
+function generate_random_string(string_length){
+    let random_string = '';
+    let random_ascii;
+    for(let i = 0; i < string_length; i++) {
+        random_ascii = Math.floor((Math.random() * 25) + 97);
+        random_string += String.fromCharCode(random_ascii)
+    }
+    return random_string
+}
+
+function generate_random_number(){
+    let num_low = 1;
+    let num_high = 9;
+    return Math.floor((Math.random() * (num_high - num_low)) + num_low);
+}
+
+function generate() {
+    return generate_random_string(Math.floor((Math.random()*3))) + generate_random_number()
+}

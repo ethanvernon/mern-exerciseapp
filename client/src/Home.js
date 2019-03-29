@@ -104,11 +104,12 @@ export class Home extends Component {
 	// to create new query into our data base
 	putDataToDB() {
 
-		var urlToShorten = this.state.userInput;
+		var newUser = this.state.userInput;
 
 		console.log('calling axios.post from react');
-		axios.post("/api/shorturl/new", {
-			url: urlToShorten
+
+		axios.post("/api/exercise/new-user", {
+			userName: newUser
 		}).then(response => {
 			console.log('sending response to console.log from react');
 			this.callback(response);
