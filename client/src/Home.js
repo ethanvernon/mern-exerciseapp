@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import './App.css';
-import {UrlForm} from './UrlForm';
+import {CreateUser} from './CreateUser';
 import {UrlDisplay} from './UrlDisplay';
 import {Description} from './Description';
 import {FrameAndButton} from './FrameAndButton';
@@ -21,7 +21,6 @@ export class Home extends Component {
 			popoverOpen: false,
 			popoverHidden: false,
 			linksPowered: 0,
-			intervalIsSet: false,
 			userInput: null
 		};
 
@@ -31,25 +30,6 @@ export class Home extends Component {
 		this.toggle = this.toggle.bind(this);
 		this.getDataFromDb = this.getDataFromDb.bind(this);
 		this.handleFormChange = this.handleFormChange.bind(this);
-	}
-
-	// fetches existing data, then updates every minute
-	componentDidMount() {
-		window.scrollTo(0,0);
-		this.getDataFromDb();
-		if (!this.state.intervalIsSet) {
-			let interval = setInterval(this.getDataFromDb, 60000);
-			this.setState({ intervalIsSet: interval });
-		}
-	}
-
-	// never let a process live forever 
-	// always kill a process everytime we are done using it
-	componentWillUnmount() {
-		if (this.state.intervalIsSet) {
-			clearInterval(this.state.intervalIsSet);
-			this.setState({ intervalIsSet: null });
-		}
 	}
 
 	// fetch's data from databse to update number of links generated
@@ -71,9 +51,9 @@ export class Home extends Component {
 	callback = (response) => {
 		//console.log('response from post is: ' + response);
 		//console.log(JSON.stringify(response));
-		console.log(response.data.original_url + ' has been shortened to ' + response.data.short_url);
+		console.log(response.data);
 
-		//updates number of urls
+		/*updates number of urls
 		this.getDataFromDb();
 
 		let urlToDisplay= 'https://mernurl.herokuapp.com/' + response.data.short_url;
@@ -97,7 +77,7 @@ export class Home extends Component {
 		this.setState({
 			shortenedUrl: urlToDisplay,
 			popoverOpen: false
-		});
+		});*/
 	}
 
 	// our put method that uses our backend api
@@ -156,7 +136,7 @@ export class Home extends Component {
 					<h1>SAVE BITS, USE SHORT URLS.</h1>
 				</div>
 
-				<UrlForm
+				<CreateUser
 					handleFormChange={this.handleFormChange}
 					userInput={this.state.userInput}
 					handleClick={this.putDataToDB}

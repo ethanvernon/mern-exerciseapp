@@ -4,7 +4,7 @@ import { Button, Form, Input } from 'reactstrap';
 import './App.css';
 
 
-export class UrlForm extends Component {
+export class CreateUser extends Component {
 
 	// initialize our state 
 
