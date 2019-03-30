@@ -153,7 +153,7 @@ app.get('/api/exercise/log', (req, res) => {
 		query=query.where('date').gt(fromDate);
 	}
 	if (toDate) {
-		query=query.where('date').gt(toDate);
+		query=query.where('date').lt(toDate);
 	}
 
 	query=query.where('userName').equals(user);
