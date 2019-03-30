@@ -2,7 +2,7 @@
 const bodyParser = require("body-parser");
 const cors = require('cors');
 const Users = require("./data");
-const Logs = require("./data");
+const Logs = require("./logs");
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
@@ -100,6 +100,8 @@ app.post('/api/exercise/add', function(req, res) {
 	var duration=req.body.duration;
 	var date=Date.parse(req.body.date);
 
+	console.log('checking for user with id: ' + user + ' and passkey: ' + password);
+
 	var checkUserAndPass=Users.findOne(
 			{userName: user,
 			passkey:password}
@@ -108,6 +110,8 @@ app.post('/api/exercise/add', function(req, res) {
 			return res.send({error: 'invalid username/password combination'});
 		}
 		
+		console.log('username and password checks out');
+
 		var newExerciseEntry = new Logs({
 			userName:user,
 			description: description,
@@ -115,13 +119,15 @@ app.post('/api/exercise/add', function(req, res) {
 			date: date
 		});
 
+		console.log('created new Logs document');
+
 		newExerciseEntry.save((err, response) => {
 			if (err) {
 				return res.json({success:false, error:err});
 			}
 			return res.send(response);
 		})
-	})
+	});	
 });
 
 //get request for user's exercise logs

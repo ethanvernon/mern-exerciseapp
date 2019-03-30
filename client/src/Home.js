@@ -30,12 +30,12 @@ export class Home extends Component {
 			logDateUserInput: null
 		};
 
-		this.putDataToDB = this.putDataToDB.bind(this);
-		this.putLogToDB = this.putLogToDB.bind(this);
+		this.putDataToDb = this.putDataToDb.bind(this);
+		this.putLogToDb = this.putLogToDb.bind(this);
 		this.callback = this.callback.bind(this);
+		this.callbackLog = this.callbackLog.bind(this);
 		this.handleCopy = this.handleCopy.bind(this);
 		this.toggle = this.toggle.bind(this);
-		this.getDataFromDb = this.getDataFromDb.bind(this);
 		this.handleFormChange = this.handleFormChange.bind(this);
 		this.handleLogFormChange = this.handleLogFormChange.bind(this);
 	}
@@ -64,7 +64,7 @@ export class Home extends Component {
 
 	// our put method that uses our backend api
 	// to create new query into our data base
-	putDataToDB() {
+	putDataToDb() {
 
 		var newUser = this.state.userInput;
 
@@ -82,9 +82,10 @@ export class Home extends Component {
 
 	// our put method that uses our backend api
 	// to create new query into our data base
-	putLogToDB() {
+	putLogToDb() {
 
 		console.log('calling axios.post from react');
+		console.log('trying to add exercise log');
 
 		axios.post("/api/exercise/add", {
 			userName: this.state.logNameUserInput,
@@ -94,10 +95,14 @@ export class Home extends Component {
 			date: this.state.logDateUserInput
 		}).then(response => {
 			console.log('sending response to console.log from react');
-			this.callback(response);
+			this.callbackLog(response);
 		}).catch(err =>{
 			console.log(err);
 		});
+	}
+
+	callbackLog(response) {
+		console.log(response.data);
 	}
 
 	handleFormChange(userInput) {
@@ -168,7 +173,7 @@ export class Home extends Component {
 				<CreateUser
 					handleFormChange={this.handleFormChange}
 					userInput={this.state.userInput}
-					handleClick={this.putDataToDB}
+					handleClick={this.putDataToDb}
 				/>
 
 				<CreateNewLog

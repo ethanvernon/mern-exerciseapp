@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// this will be our data base's data structure 
+/*// this will be our data base's data structure 
 var logSchema = new Schema({    
   userName: {
     type:Number,
@@ -11,19 +11,16 @@ var logSchema = new Schema({
     },
   description: {
     type:String,
-    required: true,
-    unique:true
+    required: true
   },
   duration: {
     type:Number,
-    required: true,
-    unique:true
+    required: true
   },
   date: {
-    type:Date,
-    unique:true
+    type:Date
   }
-});
+});*/
 
 // this will be our data base's data structure 
 var userSchema = new Schema({    
@@ -40,5 +37,5 @@ var userSchema = new Schema({
 });
 
 // export the new Schema so we could modify it using Node.js
-module.exports = mongoose.model("Logs", logSchema);
+//module.exports = mongoose.model("Logs", logSchema);
 module.exports = mongoose.model("Users", userSchema);
