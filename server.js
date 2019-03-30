@@ -134,7 +134,7 @@ app.post('/api/exercise/add', function(req, res) {
 app.get('/api/exercise/log', (req, res) => {
 	
 	//store route parameters
-	//log?userid=<user>&passkey=<passkey>&from=<from>&to=<to>&limit=<limit>
+	//log?username=<user>&passkey=<passkey>&from=<from>&to=<to>&limit=<limit>
 	//var userId=req.query.userid
 	//validate user and passkey
 	//user parameters to filter results
@@ -145,7 +145,7 @@ app.get('/api/exercise/log', (req, res) => {
 	var password=req.query.passkey;
 	var fromDate=(req.query.from) ? Date.parse(req.query.from) : null;
 	var toDate=(req.query.from) ? Date.parse(req.query.to) : null;
-	var limit=req.query.limit;
+	var limit=parseInt(req.query.limit);
 
 	var query = Logs.find();
 

@@ -6,18 +6,22 @@ const Schema = mongoose.Schema;
 var logSchema = new Schema({    
   userName: {
     type:String,
-    required: true
+    required: true,
+    unique: false
     },
   description: {
     type:String,
-    required: true
+    required: true,
+    unique: false
   },
   duration: {
     type:Number,
-    required: true
+    required: true,
+    unique: false
   },
   date: {
-    type:Date
+    type:Date,
+    unique: false
   }
 });
 
