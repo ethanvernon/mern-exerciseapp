@@ -6,8 +6,7 @@ const Schema = mongoose.Schema;
 var logSchema = new Schema({    
   userName: {
     type:String,
-    required: true,
-    unique:true
+    required: true
     },
   description: {
     type:String,

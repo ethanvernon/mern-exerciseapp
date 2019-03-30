@@ -141,17 +141,36 @@ app.get('/api/exercise/log', (req, res) => {
 	//change dates to ISO string: new Date(year,month,day,0,0,0).toISOString();
 	//return results
 
-	var user=req.body.username;
-	var password=req.body.passkey;
-	var fromDate=Date.parse(req.body.from);
-	var toDate=Date.parse(req.body.to);
-	var limit=req.body.limit;
+	var user=req.query.username;
+	var password=req.query.passkey;
+	var fromDate=(req.query.from) ? Date.parse(req.query.from) : null;
+	var toDate=(req.query.from) ? Date.parse(req.query.to) : null;
+	var limit=req.query.limit;
 
+	var query = Logs.find();
+
+	if (fromDate) {
+		query=query.where('date').gt(fromDate);
+	}
+	if (toDate) {
+		query=query.where('date').gt(toDate);
+	}
+
+	query=query.where('userName').equals(user);
+
+	query=query.limit(limit);
+	query=query.select({date:1, description:1, duration:1});
+
+	query.exec((err, data) => {
+		if (err) throw err;	
+		res.send(data);;
+	});
+
+/*
 	Logs.
 		find({
-			user: user,
-			passkey: password,
-			date: { $gt: fromDate, $lt: toDate }
+			userName: user
+			//date: { $gt: fromDate, $lt: toDate }
 		}).
 		limit(limit).
 		select({date:1, description:1, duration:1}).
@@ -161,6 +180,8 @@ app.get('/api/exercise/log', (req, res) => {
 			}
 			return res.send(data);
 		});
+
+		*/
 });
 
 app.get("*", (req, res) => {
