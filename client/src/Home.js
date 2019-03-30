@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import './App.css';
 import {CreateUser} from './CreateUser';
+import {CreateNewLog} from './CreateNewLog';
 import {UrlDisplay} from './UrlDisplay';
 import {Description} from './Description';
 import {FrameAndButton} from './FrameAndButton';
@@ -21,15 +22,22 @@ export class Home extends Component {
 			popoverOpen: false,
 			popoverHidden: false,
 			linksPowered: 0,
-			userInput: null
+			userInput: null,
+			logNameUserInput: null,
+			logPasswordUserInput: null,
+			logDescriptionUserInput: null,
+			logDurationUserInput: null,
+			logDateUserInput: null
 		};
 
 		this.putDataToDB = this.putDataToDB.bind(this);
+		this.putLogToDB = this.putLogToDB.bind(this);
 		this.callback = this.callback.bind(this);
 		this.handleCopy = this.handleCopy.bind(this);
 		this.toggle = this.toggle.bind(this);
 		this.getDataFromDb = this.getDataFromDb.bind(this);
 		this.handleFormChange = this.handleFormChange.bind(this);
+		this.handleLogFormChange = this.handleLogFormChange.bind(this);
 	}
 
 	//console.log's the new document made by putDataToDB
@@ -72,10 +80,63 @@ export class Home extends Component {
 		});
 	}
 
+	// our put method that uses our backend api
+	// to create new query into our data base
+	putLogToDB() {
+
+		console.log('calling axios.post from react');
+
+		axios.post("/api/exercise/add", {
+			userName: this.state.logNameUserInput,
+			passkey: this.state.logPasswordUserInput,
+			description: this.state.logDescriptionUserInput,
+			duration: this.state.logDurationUserInput,
+			date: this.state.logDateUserInput
+		}).then(response => {
+			console.log('sending response to console.log from react');
+			this.callback(response);
+		}).catch(err =>{
+			console.log(err);
+		});
+	}
+
 	handleFormChange(userInput) {
 		this.setState({
 			userInput: userInput
 		});
+	}
+
+	handleLogFormChange(userInput, field) {
+
+		switch(field) {
+			case 'user':
+				this.setState({
+					logNameUserInput: userInput
+				});
+				break;
+			case 'password':
+				this.setState({
+					logPasswordUserInput: userInput
+				});
+				break;
+			case 'description':
+				this.setState({
+					logDescriptionUserInput: userInput
+				});
+				break;
+			case 'duration':
+				this.setState({
+					logDurationUserInput: userInput
+				});
+				break;
+			case 'date':
+				this.setState({
+					logDateUserInput: userInput
+				});
+				break;
+			default:
+				return null;
+		}
 	}
 
 	//copies a shortened URL to keyboard
@@ -100,7 +161,30 @@ export class Home extends Component {
 			popoverOpen: !this.state.popoverOpen
 		});
 	}
-	
+
+	render() {
+		return(
+			<div>
+				<CreateUser
+					handleFormChange={this.handleFormChange}
+					userInput={this.state.userInput}
+					handleClick={this.putDataToDB}
+				/>
+
+				<CreateNewLog
+					handleLogFormChange={this.handleLogFormChange}
+					logNameUserInput={this.state.logNameUserInput}
+					logPasswordUserInput={this.state.logPasswordUserInput}
+					logDescriptionUserInput={this.state.logDescriptionUserInput}
+					logDurationUserInput={this.state.logDurationUserInput}
+					logDateUserInput={this.state.logDateUserInput}
+					handleClick={this.putLogToDb}
+				/>
+
+			</div>
+		)
+	}
+	/*
 	render() {
 		return (
 		<div className='page'>	
@@ -140,5 +224,5 @@ export class Home extends Component {
 
 		</div>
 		);
-	}
+	}*/
 }

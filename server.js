@@ -1,7 +1,8 @@
 
 const bodyParser = require("body-parser");
 const cors = require('cors');
-const Links = require("./data");
+const Users = require("./data");
+const Logs = require("./data");
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
