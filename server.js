@@ -124,7 +124,8 @@ app.post('/api/exercise/add', function(req, res) {
 });
 
 //get request for user's exercise logs
-app.get('/api/exercise/log'), function(req, res) {
+app.get('/api/exercise/log', (req, res) => {
+	
 	//store route parameters
 	//log?userid=<user>&passkey=<passkey>&from=<from>&to=<to>&limit=<limit>
 	//var userId=req.query.userid
@@ -132,47 +133,28 @@ app.get('/api/exercise/log'), function(req, res) {
 	//user parameters to filter results
 	//change dates to ISO string: new Date(year,month,day,0,0,0).toISOString();
 	//return results
-}
 
+	var user=req.body.username;
+	var password=req.body.passkey;
+	var fromDate=Date.parse(req.body.from);
+	var toDate=Date.parse(req.body.to);
+	var limit=req.body.limit;
 
-//get request to update number of links made in database
-app.get("/getData", (req, res) => {
-  console.log('checking database for data');
-  Links.find((err, data) => {
-    if (err) {
-      console.log('error checking databse for data');
-      return res.json({ success: false, error: err });
-    }
-    //console.log('no error checking database. returning data: ' + JSON.stringify(data));
-    console.log(data.length);
-    //return res.send(data);
-  })
-  .select({ _id: 1})
-  .exec((err, data) => {
-  	console.log('return data as :' + data);
-  	return res.send(data);
-  });
+	Logs.
+		find({
+			user: user,
+			passkey: password,
+			date: { $gt: fromDate, $lt: toDate }
+		}).
+		limit(limit).
+		select({date:1, description:1, duration:1}).
+		exec((err, data) => {
+			if (err) {
+				return res.json({ success: false, error: err });
+			}
+			return res.send(data);
+		});
 });
-
-
-
-
-
-// Get input from client - Route parameters 
-app.get('/:shortened', function(req, res, next) {
-      //check the database for the shortened url
-      var findOneByFood = Links.findOne({short_url:parseInt(req.params.shortened)})
-      .then(function (data) {
-        if(!data) {
-          console.log('got an error: ' + data);
-          return null;
-        } else {
-          console.log('got some data: ' + JSON.stringify(data));
-          res.redirect(data.original_url);
-        }
-      });
-});
-
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
@@ -180,7 +162,6 @@ app.get("*", (req, res) => {
 
 // launch our backend into a port
 app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
-
 
 //generates string of random letter a-z of string_length
 function generate_random_string(string_length){
