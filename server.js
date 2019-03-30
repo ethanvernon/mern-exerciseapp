@@ -86,11 +86,18 @@ app.post('/api/exercise/new-user', function(req,res) {
 
 //post request from form for new exercise entry
 app.post('/api/exercise/add', function(req, res) {
+
+	//check username and passkey match
+	//check description length/type
+	//check duration length/type
+	//check date type
+	//submit entry
+
 	var user=req.body.userName;
 	var password=req.body.passkey;
 	var description=req.body.description;
 	var duration=req.body.duration;
-	var date=req.body.date;
+	var date=Date.parse(req.body.date);
 
 	var checkUserAndPass=Users.findOne(
 			{userName: user,
@@ -101,8 +108,7 @@ app.post('/api/exercise/add', function(req, res) {
 		}
 		
 		var newExerciseEntry = new Logs({
-			userId:user,
-			passkey:password,
+			userName:user,
 			description: description,
 			duration: duration,
 			date: date
@@ -115,13 +121,6 @@ app.post('/api/exercise/add', function(req, res) {
 			return res.send(response);
 		})
 	})
-});
-
-	//check username and passkey match
-	//check description length/type
-	//check duration length/type
-	//check date type
-	//submit entry
 });
 
 //get request for user's exercise logs

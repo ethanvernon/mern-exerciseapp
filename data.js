@@ -6,18 +6,17 @@ const Schema = mongoose.Schema;
 var logSchema = new Schema({    
   userName: {
     type:Number,
+    required: true,
     unique:true
     },
-  passkey: {
-  	type:String,
-  	unique:true
-  },
   description: {
     type:String,
+    required: true,
     unique:true
   },
   duration: {
     type:Number,
+    required: true,
     unique:true
   },
   date: {
@@ -30,10 +29,12 @@ var logSchema = new Schema({
 var userSchema = new Schema({    
   userName: {
     type:String,
+    required: true,
     unique:true
     },
   passkey: {
   	type:String,
+    required: true,
   	unique:true
   }
 });
