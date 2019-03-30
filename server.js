@@ -45,7 +45,7 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 
 
-//post request from form in Home.js
+//post request from form in for new user Home.js
 app.post('/api/exercise/new-user', function(req,res) {
 
 	//check validity of username
@@ -84,6 +84,56 @@ app.post('/api/exercise/new-user', function(req,res) {
 	});
 });
 
+//post request from form for new exercise entry
+app.post('/api/exercise/add', function(req, res) {
+	var user=req.body.userName;
+	var password=req.body.passkey;
+	var description=req.body.description;
+	var duration=req.body.duration;
+	var date=req.body.date;
+
+	var checkUserAndPass=Users.findOne(
+			{userName: user,
+			passkey:password}
+	).then(function(data) {
+		if (!data) {
+			return res.send({error: 'invalid username/password combination'});
+		}
+		
+		var newExerciseEntry = new Logs({
+			userId:user,
+			passkey:password,
+			description: description,
+			duration: duration,
+			date: date
+		});
+
+		newExerciseEntry.save((err, response) => {
+			if (err) {
+				return res.json({success:false, error:err});
+			}
+			return res.send(response);
+		})
+	})
+});
+
+	//check username and passkey match
+	//check description length/type
+	//check duration length/type
+	//check date type
+	//submit entry
+});
+
+//get request for user's exercise logs
+app.get('/api/exercise/log'), function(req, res) {
+	//store route parameters
+	//log?userid=<user>&passkey=<passkey>&from=<from>&to=<to>&limit=<limit>
+	//var userId=req.query.userid
+	//validate user and passkey
+	//user parameters to filter results
+	//change dates to ISO string: new Date(year,month,day,0,0,0).toISOString();
+	//return results
+}
 
 
 //get request to update number of links made in database
@@ -132,7 +182,8 @@ app.get("*", (req, res) => {
 // launch our backend into a port
 app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
 
-//generates random string
+
+//generates string of random letter a-z of string_length
 function generate_random_string(string_length){
     let random_string = '';
     let random_ascii;
@@ -143,12 +194,14 @@ function generate_random_string(string_length){
     return random_string
 }
 
+//generates random number 1-9
 function generate_random_number(){
     let num_low = 1;
     let num_high = 9;
     return Math.floor((Math.random() * (num_high - num_low)) + num_low);
 }
 
+//generates random string between 1-3 letters and random number (credit: https://codehandbook.org/generate-random-string-characters-in-javascript/ )
 function generate() {
-    return generate_random_string(Math.floor((Math.random()*3))) + generate_random_number()
+    return generate_random_string(Math.floor((Math.random()*3)+1)) + generate_random_number()
 }

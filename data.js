@@ -4,10 +4,14 @@ const Schema = mongoose.Schema;
 
 // this will be our data base's data structure 
 var logSchema = new Schema({    
-  userId: {
+  userName: {
     type:Number,
     unique:true
     },
+  passkey: {
+  	type:String,
+  	unique:true
+  },
   description: {
     type:String,
     unique:true
@@ -27,7 +31,11 @@ var userSchema = new Schema({
   userName: {
     type:String,
     unique:true
-    }
+    },
+  passkey: {
+  	type:String,
+  	unique:true
+  }
 });
 
 // export the new Schema so we could modify it using Node.js
