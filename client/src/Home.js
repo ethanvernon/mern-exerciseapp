@@ -32,52 +32,26 @@ export class Home extends Component {
 		this.handleFormChange = this.handleFormChange.bind(this);
 	}
 
-	// fetch's data from databse to update number of links generated
-	getDataFromDb = () => {
-		axios.get("/getData")
-			.then(data => {
-				//handle success
-				//console.log('data returned looks like this: ' + data);
-				//console.log("stringified that's like this: " + JSON.stringify(data));
-				//data.json();
-				this.setState({ linksPowered: data.data.length });
-			}).catch(err =>{
-				//handle error
-				console.log(err);
-			});
-	};
-
 	//console.log's the new document made by putDataToDB
 	callback = (response) => {
 		//console.log('response from post is: ' + response);
 		//console.log(JSON.stringify(response));
 		console.log(response.data);
 
-		/*updates number of urls
-		this.getDataFromDb();
+		let newUserName= response.data.userName;
 
-		let urlToDisplay= 'https://mernurl.herokuapp.com/' + response.data.short_url;
-
-		//handle bad urls
-		if (response.data.short_url == undefined) {
-			//show error message
-			urlToDisplay = 'Invalid URL. Please check again. Make sure to include http:// or https://';
-			//disable popover for copying link
-			this.setState({
-				popoverHidden:true
-			});
-		} else {
-			//make sure popover for copying link is enabled
-			this.setState({
-				popoverHidden:false
-			})
-		}
+		
+		//make sure popover for copying link is enabled
+		this.setState({
+			popoverHidden:false
+		})
+		
 
 		//change state so that shortenedURL will display
 		this.setState({
-			shortenedUrl: urlToDisplay,
+			shortenedUrl: newUserName,
 			popoverOpen: false
-		});*/
+		});
 	}
 
 	// our put method that uses our backend api
