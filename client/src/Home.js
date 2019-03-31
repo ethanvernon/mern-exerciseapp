@@ -4,11 +4,12 @@ import './App.css';
 import {CreateUser} from './CreateUser';
 import {CreateNewLog} from './CreateNewLog';
 import {UrlDisplay} from './UrlDisplay';
-import {Description} from './Description';
 import {FrameAndButton} from './FrameAndButton';
 import {Ending} from './Ending';
 import {Footer} from './Footer';
 import {Title} from './Title';
+import {Description} from './Description';
+
 
 export class Home extends Component {
 
@@ -143,6 +144,8 @@ export class Home extends Component {
 			<div>
 				<Title/>
 
+				<Description/>
+				
 				<CreateUser
 					handleFormChange={this.handleFormChange}
 					userInput={this.state.userInput}
