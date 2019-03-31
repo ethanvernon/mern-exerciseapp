@@ -9,6 +9,9 @@ import {Ending} from './Ending';
 import {Footer} from './Footer';
 import {Title} from './Title';
 import {Description} from './Description';
+import {BodyHeader} from './BodyHeader';
+import {SearchAPI} from './SearchAPI';
+import {ResultPre} from './ResultPre';
 
 
 export class Home extends Component {
@@ -25,7 +28,9 @@ export class Home extends Component {
 			logPasswordUserInput: null,
 			logDescriptionUserInput: null,
 			logDurationUserInput: null,
-			logDateUserInput: null
+			logDateUserInput: null,
+			searchResult: null,
+			userHomeInput: null
 		};
 
 		this.putDataToDb = this.putDataToDb.bind(this);
@@ -34,6 +39,7 @@ export class Home extends Component {
 		this.callbackLog = this.callbackLog.bind(this);
 		this.handleFormChange = this.handleFormChange.bind(this);
 		this.handleLogFormChange = this.handleLogFormChange.bind(this);
+		this.handleHomeFormChange = this.handleHomeFormChange.bind(this);
 	}
 
 	//console.log's the new document made by putDataToDB
@@ -107,6 +113,12 @@ export class Home extends Component {
 		});
 	}
 
+	handleHomeFormChange(userInput) {
+		this.setState({
+			userHomeInput: userInput
+		})
+	}
+
 	handleLogFormChange(userInput, field) {
 		switch(field) {
 			case 'user':
@@ -145,8 +157,18 @@ export class Home extends Component {
 				<Title/>
 
 				<Description/>
-				
-				<CreateUser
+
+				<BodyHeader/>
+
+				<SearchAPI/>
+
+				<ResultPre
+					searchResult={this.state.searchResult}
+					handleFormChange={this.handleHomeFormChange}
+					userInput={this.state.userHomeInput}
+				/>
+
+				{/*<CreateUser
 					handleFormChange={this.handleFormChange}
 					userInput={this.state.userInput}
 					handleClick={this.putDataToDb}
@@ -160,7 +182,7 @@ export class Home extends Component {
 					logDurationUserInput={this.state.logDurationUserInput}
 					logDateUserInput={this.state.logDateUserInput}
 					handleClick={this.putLogToDb}
-				/>
+				/>*/}
 
 			</div>
 		)

@@ -100,6 +100,10 @@ li a:hover {
   margin-right: auto !important;
 }
 
+.mr-2 {
+  border-color:white !important;
+}
+
 @media only screen and (min-width: 900px) {
   nav {
     width:940px;
@@ -111,6 +115,49 @@ li a:hover {
 @media only screen and (min-width: 768px) {
   #white-nav {
     height:56px;
+  }
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------Title.js-------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------*/
+
+.heading {
+  text-align:center;  
+  margin-top:56px;
+  background-color:#21201E;
+  height:200px;
+  overflow:hidden; 
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color:white;
+  padding-top:15px;
+}
+
+.heading h1 {  
+  letter-spacing:3px;
+  font-weight:500;  
+  font-size:calc(19px + 2vw);
+  font-family: "Anton";
+}
+
+.key-solution {
+  max-width:900px;
+  font-size:28px;
+  font-size:calc(13px + 2vw);
+  font-family:"Roboto";
+}
+
+@media only screen and (min-width: 1025px) {
+  .heading h1 {
+    font-size:40.5px;
+  }
+
+  .key-solution{
+    font-size:34.5px;
   }
 }
 
@@ -195,22 +242,6 @@ li a:hover {
   z-index:4;
 }
 
-/*conditionally rendered result box container for shortened URL*/
-.result-container {
-  margin-top:100px;
-  align-self:center;
-  position:absolute;
-  text-align:center;
-  max-width:95%;
-}
-
-@media only screen and (max-width: 438px) {
-  /*adjust margin for when statement takes 2 lines*/
-  .result-container {
-    margin-top:113px;
-  }
-}
-
 /*conditionally rendered result box for shortened URL*/
 .result-text {
  /* background-color: rgba(0, 123, 255, 0.3);*/
@@ -230,8 +261,30 @@ li a:hover {
 
 
 /*--------------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------bodyheader.js-------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------*/
+
+.body-header {
+  text-align:center;
+  background-color:white;
+  padding-top:30px;
+  padding-bottom:30px;
+  width:100%;
+  text-align:center;
+  color:#263238;
+  font-size:21px;
+}
+
+.body-header-text h2{
+  font-weight:900;
+  font-family:"Anton";
+  letter-spacing:1px;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------description.js-------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------------------------------*/
+
 .description {
   text-align:center;
   background-color:#F5F5F5;
@@ -253,17 +306,52 @@ li a:hover {
   max-width:700px;
 }
 
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------searchAPI.js---------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------*/
 
+/*holds the form*/
+.search-container {
+  width:90%;
+  max-width:800px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------ResultPre.js---------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------*/
+
+#result-output {
+  height:300px;
+  width:90%;
+  max-width:800px;
+  background-color:#f5f5f5;
+  overflow-y:scroll;
+  display:block;
+  word-break:break-all;
+  word-wrap:break-word;
+  border: 1px solid #ccc;
+  margin-top:40px;
+  margin-left:auto;
+  margin-right:auto;
+  padding:8px;
+  line-height:2em;
+  font-size:16px;
+}
 
 /*--------------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------footer---------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------------------------------*/
+
 .footer {
-  height:250px;
+  height:200px;
 }
 
 .social-media {
   margin:30px auto;
+  margin-top:70px;
+  margin-bottom:0px;
   width:fit-content;
 }
 
@@ -274,64 +362,8 @@ li a:hover {
 .footer p {
   text-align:center;
   margin-bottom:50px;
-  color:#ff6700;
+  color:#212529;
 }
-
-.up-container {
-  width:fit-content;
-  margin:30px auto;
-}
-
-.back-top {
- color:#ff6700;
-}
-
-.back-top:hover {
-  cursor:pointer;
-}
-
-/*--------------------------------------------------------------------------------------------------------------------------*/
-/*-----------------------------------------about----------------------------------------------------------------------------*/
-/*--------------------------------------------------------------------------------------------------------------------------*/
-
-.heading {
-  text-align:center;  
-  margin-top:56px;
-  background-color:#21201E;
-  height:200px;
-  overflow:hidden; 
-  width:100%;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color:white;
-}
-
-.heading h1 {  
-  letter-spacing:3px;
-  font-weight:500;  
-  font-size:calc(19px + 2vw);
-  font-family: "Anton";
-}
-
-.key-solution {
-  max-width:900px;
-  font-size:28px;
-  font-size:calc(13px + 2vw);
-  font-family:"Roboto";
-}
-
-@media only screen and (min-width: 1025px) {
-  .heading h1 {
-    font-size:40.5px;
-  }
-
-  .key-solution{
-    font-size:34.5px;
-  }
-}
-
 
 /*--------------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------media queries >767px-------------------------------------------------------------*/

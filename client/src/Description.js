@@ -4,11 +4,6 @@ import './App.css';
 
 
 export class Description extends Component {
-
-	componentDidMount() {
-		window.scrollTo(0,0);
-	}
-
 	render() {
 		return (
 			<div className='description'>
