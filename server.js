@@ -134,8 +134,7 @@ app.post('/api/exercise/add', function(req, res) {
 app.get('/api/exercise/log', (req, res) => {
 	
 	//store route parameters
-	//log?username=<user>&passkey=<passkey>&from=<from>&to=<to>&limit=<limit>
-	//var userId=req.query.userid
+	//http://localhost:3001/api/exercise/log?username=ethan&from=2011-01-01&to=2017-01-01&limit=2
 	//validate user and passkey
 	//user parameters to filter results
 	//change dates to ISO string: new Date(year,month,day,0,0,0).toISOString();
@@ -157,7 +156,6 @@ app.get('/api/exercise/log', (req, res) => {
 	}
 
 	query=query.where('userName').equals(user);
-
 	query=query.limit(limit);
 	query=query.select({date:1, description:1, duration:1});
 

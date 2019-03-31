@@ -40,21 +40,20 @@ export class Header extends Component {
 	render() {
 	return (
 		<div className='navbar-container'>
-			<Navbar id='white-nav' color='light' light expand='md'>
-				<NavbarBrand href="/" className="mr-auto"><Link to="/"><img src={textLogo}/></Link></NavbarBrand>
+			<Navbar id='white-nav' color='dark' light expand='md'>
 				<NavbarToggler onClick={this.toggle} className='mr-2'/>
 				<Collapse isOpen={this.state.isOpen} navbar>
 					<Nav navbar className='ml-auto'>
 						<NavItem>
-							<Link to="/" className='padded-nav' onClick={this.closeNav} > HOME </Link>
+							<Link to="/" className='padded-nav' onClick={this.closeNav} > Home </Link>
 						</NavItem>
 
 						<NavItem>
-							<Link to="/about" className='padded-nav' onClick={this.closeNav} > ABOUT </Link>
+							<Link to="/documentation" className='padded-nav' onClick={this.closeNav} > Documentation </Link>
 						</NavItem>
 
 						<NavItem>
-							<a href='http://fromgaming.com/' target='_blank' to="/contact-us" className='padded-nav' onClick={this.closeNav} > CONTACT </a>
+							<a href='http://fromgaming.com/' target='_blank' to="/contact-us" className='padded-nav' onClick={this.closeNav} > Chat </a>
 						</NavItem>
 					</Nav>
 				</Collapse>

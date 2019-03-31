@@ -8,6 +8,7 @@ import {Description} from './Description';
 import {FrameAndButton} from './FrameAndButton';
 import {Ending} from './Ending';
 import {Footer} from './Footer';
+import {Title} from './Title';
 
 export class Home extends Component {
 
@@ -17,11 +18,7 @@ export class Home extends Component {
 		super(props);
 
 		this.state = {
-			data: [],
 			shortenedUrl: null,
-			popoverOpen: false,
-			popoverHidden: false,
-			linksPowered: 0,
 			userInput: null,
 			logNameUserInput: null,
 			logPasswordUserInput: null,
@@ -34,8 +31,6 @@ export class Home extends Component {
 		this.putLogToDb = this.putLogToDb.bind(this);
 		this.callback = this.callback.bind(this);
 		this.callbackLog = this.callbackLog.bind(this);
-		this.handleCopy = this.handleCopy.bind(this);
-		this.toggle = this.toggle.bind(this);
 		this.handleFormChange = this.handleFormChange.bind(this);
 		this.handleLogFormChange = this.handleLogFormChange.bind(this);
 	}
@@ -112,7 +107,6 @@ export class Home extends Component {
 	}
 
 	handleLogFormChange(userInput, field) {
-
 		switch(field) {
 			case 'user':
 				this.setState({
@@ -144,32 +138,11 @@ export class Home extends Component {
 		}
 	}
 
-	//copies a shortened URL to keyboard
-	handleCopy() {
-		//clear any selection
-		if (window.getSelection) {window.getSelection().removeAllRanges();}
-
-		//copy text in #shortened-url to clipboard
-		let range = document.createRange();
-		range.selectNode(document.getElementById('shortened-url'));
-		window.getSelection().addRange(range);
-		document.execCommand("copy");
-		console.log("copied");
-
-		//re-clear any selection
-		if (window.getSelection) {window.getSelection().removeAllRanges();}
-	}
-
-	//handles popover when link is copied to clipboard
-	toggle() {
-		this.setState({
-			popoverOpen: !this.state.popoverOpen
-		});
-	}
-
 	render() {
 		return(
 			<div>
+				<Title/>
+
 				<CreateUser
 					handleFormChange={this.handleFormChange}
 					userInput={this.state.userInput}
@@ -189,45 +162,4 @@ export class Home extends Component {
 			</div>
 		)
 	}
-	/*
-	render() {
-		return (
-		<div className='page'>	
-
-			<div className='main' id='main'>
-				<div className='statement'>
-					<h1>SAVE BITS, USE SHORT URLS.</h1>
-				</div>
-
-				<CreateUser
-					handleFormChange={this.handleFormChange}
-					userInput={this.state.userInput}
-					handleClick={this.putDataToDB}
-				/>
-
-				{this.state.shortenedUrl != null &&
-				<UrlDisplay
-					shortenedUrl={this.state.shortenedUrl}
-					popoverHidden={this.state.popoverHidden}
-					popoverOpen={this.state.popoverOpen}
-					handleClick={this.handleCopy}
-					toggle={this.toggle}
-				/>
-				}
-
-			</div>
-			
-			<Description/>
-
-			<FrameAndButton/>
-
-			<Ending
-				linksPowered={this.state.linksPowered}
-			/>
-
-			<Footer/>
-
-		</div>
-		);
-	}*/
 }
