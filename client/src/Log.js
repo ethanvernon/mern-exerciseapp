@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Col, Container, Row } from 'reactstrap';
 import {LogTitle} from './LogTitle';
 import {CreateNewLog} from './CreateNewLog';
 import {LogDescription} from './LogDescription';

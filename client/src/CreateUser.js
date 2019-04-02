@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Form, FormGroup, Input, InputGroupAddon, InputGroupText, InputGroup, Label } from 'reactstrap';
+import { Button, FormGroup, Input, InputGroupAddon, InputGroup, Label } from 'reactstrap';
 import './App.css';
-
 
 export class CreateUser extends Component {
 

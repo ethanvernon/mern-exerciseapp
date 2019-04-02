@@ -164,7 +164,7 @@ li a:hover {
 /*--------------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------Home-----------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------------------------------*/
-
+/*
 .main {
   margin-top:48px;
   background-image: url(./home-back.jpg);
@@ -208,19 +208,16 @@ li a:hover {
   width:fit-content;
 }
 
-/*holds the form*/
 .form-container {
   width:90%;
   max-width:800px;
   margin-top:30px;
 }
 
-/*is the bootstrap Form*/
 #url-form {
   position:relative;
 }
 
-/*is the bootstrap Input inside the Form*/
 #url-input {
   width:100%;
   height:50px;  
@@ -229,7 +226,6 @@ li a:hover {
   position:relative;
 }
 
-/*is the bootstrap Button inside the Form*/
 #inline-button {
   height:50px;
   border-radius: 0 .25rem .25rem 0;
@@ -242,9 +238,7 @@ li a:hover {
   z-index:4;
 }
 
-/*conditionally rendered result box for shortened URL*/
 .result-text {
- /* background-color: rgba(0, 123, 255, 0.3);*/
   text-align:center;
   color:white;
   margin-bottom:5px;
@@ -258,7 +252,7 @@ li a:hover {
 .popover {
   z-index:4 !important;
 }
-
+*/
 
 /*--------------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------bodyheader.js-------------------------------------------------------------------*/

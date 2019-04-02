@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Form, FormGroup, Input, InputGroupAddon, InputGroupText, InputGroup, Label } from 'reactstrap';
+import { Button, FormGroup, Input, Label } from 'reactstrap';
 import './App.css';
 
 
