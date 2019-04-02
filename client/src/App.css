@@ -359,11 +359,8 @@ li a:hover {
   width:90%;
   max-width:600px;
   background-color:#f5f5f5;
-  overflow-y:scroll;
   overflow-x:scroll;
   display:block;
-  word-break:break-all;
-  word-wrap:break-word;
   border: 1px solid #ccc;
   margin-top:40px;
   margin-left:auto;
