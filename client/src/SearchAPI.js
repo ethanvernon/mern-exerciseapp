@@ -17,7 +17,7 @@ export class SearchAPI extends Component {
 
 	//passes changed value from form to Home.js
 	handleChange(e) {
-		this.props.handleFormChange(e.target.value);
+		this.props.handleChange(e.target.value);
 	}
 
 	//copies a shortened URL to keyboard

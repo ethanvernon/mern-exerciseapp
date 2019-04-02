@@ -35,6 +35,7 @@ export class Home extends Component {
 
 		this.putDataToDb = this.putDataToDb.bind(this);
 		this.putLogToDb = this.putLogToDb.bind(this);
+		this.formGetData = this.formGetData.bind(this);
 		this.callback = this.callback.bind(this);
 		this.callbackLog = this.callbackLog.bind(this);
 		this.handleFormChange = this.handleFormChange.bind(this);
@@ -62,6 +63,24 @@ export class Home extends Component {
 			shortenedUrl: newUserName,
 			popoverOpen: false
 		});
+	}
+
+	formGetData() {
+		//builds query from user input on home page
+		var formQuery='/api/exercise/log/?' + this.state.userInput;
+
+
+		axios.get(formQuery)
+			.then(data => {
+				//handle success
+				//console.log('data returned looks like this: ' + data);
+				//console.log("stringified that's like this: " + JSON.stringify(data));
+				//data.json();
+				this.setState({ searchResult: JSON.stringify(data.data, null, 2) });
+			}).catch(err =>{
+				//handle error
+				console.log(err);
+			});
 	}
 
 	// our put method that uses our backend api
@@ -160,7 +179,10 @@ export class Home extends Component {
 
 				<BodyHeader/>
 
-				<SearchAPI/>
+				<SearchAPI
+					handleChange={this.handleFormChange}
+					handleClick={this.formGetData}
+					userInput={this.state.userInput}/>
 
 				<ResultPre
 					searchResult={this.state.searchResult}
