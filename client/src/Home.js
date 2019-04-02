@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import './App.css';
-import {CreateUser} from './CreateUser';
-import {CreateNewLog} from './CreateNewLog';
-import {Footer} from './Footer';
 import {Title} from './Title';
 import {Description} from './Description';
 import {BodyHeader} from './BodyHeader';
 import {SearchAPI} from './SearchAPI';
 import {ResultPre} from './ResultPre';
+import {HelpText} from './HelpText';
+
 
 
 export class Home extends Component {
@@ -25,6 +24,7 @@ export class Home extends Component {
 
 		this.formGetData = this.formGetData.bind(this);
 		this.handleFormChange = this.handleFormChange.bind(this);
+		this.handleExampleQuery = this.handleExampleQuery.bind(this);
 	}
 
 	//whenever the home page form SearchAPI.js changes from user input, this function
@@ -44,10 +44,27 @@ export class Home extends Component {
 
 		axios.get(formQuery)
 			.then(data => {
-				//handle success
-				//console.log('data returned looks like this: ' + data);
-				//console.log("stringified that's like this: " + JSON.stringify(data));
-				//data.json();
+				//sets states which renders the result in the ResultPre component 
+				this.setState({ searchResult: JSON.stringify(data.data, null, 2) });
+			}).catch(err =>{
+				//handle error
+				console.log(err);
+			});
+	}
+
+	//sends a GET request and fills an example query in whenever one of the example
+	//queries are clicked 
+	handleExampleQuery(query) {
+		//builds query from example query
+		var formQuery='/api/exercise/log/?' + query;
+
+		this.setState({
+			userInput: query
+		});
+
+		axios.get(formQuery)
+			.then(data => {
+				//sets states which renders the result in the ResultPre component 
 				this.setState({ searchResult: JSON.stringify(data.data, null, 2) });
 			}).catch(err =>{
 				//handle error
@@ -68,6 +85,10 @@ export class Home extends Component {
 					handleChange={this.handleFormChange}
 					handleClick={this.formGetData}
 					userInput={this.state.userInput}/>
+
+				<HelpText
+					handleClick={this.handleExampleQuery}
+				/>
 
 				<ResultPre
 					searchResult={this.state.searchResult}

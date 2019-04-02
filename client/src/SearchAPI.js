@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Input, InputGroupAddon, InputGroupText, InputGroup } from 'reactstrap';
+import { Button, Input, InputGroupAddon, InputGroupText, InputGroup, Label } from 'reactstrap';
 import './App.css';
 
 
@@ -29,13 +29,16 @@ export class SearchAPI extends Component {
 		return (
 			<div className='search-container'>
 
-				 <InputGroup>
+
+				<Label for='home-query' id='small-screen-label'>http://localhost:3000/api/exercise/log/?</Label>
+
+				<InputGroup>
 
 					<InputGroupAddon addonType="prepend" id='prepend-query'>
 						<InputGroupText>http://localhost:3000/api/exercise/log/?</InputGroupText>
 					</InputGroupAddon>
 
-					<Input placeholder="username=ethan" type='text' value={this.props.userInput} onChange={e => this.handleChange(e)}/>
+					<Input placeholder="username=ethan" id='home-query' type='text' value={this.props.userInput} onChange={e => this.handleChange(e)}/>
 
 					<InputGroupAddon addonType="append">
 						<Button color='primary' onClick={this.handleClick}>submit</Button>
