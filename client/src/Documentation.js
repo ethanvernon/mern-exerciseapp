@@ -14,7 +14,7 @@ export class Documentation extends Component {
 			<div className='documentation'>
 				<h2>Introduction</h2>
 				<hr/>
-				<p>Welcome! This documentation should help you familiarise yourself with the resources availabel and how to consume them with HTTP requests.
+				<p>Welcome! This documentation should help you familiarize yourself with the resources available and how to consume them with HTTP requests.
 				Read through the getting started section before you dive in. 
 				Most of your problems should be solved just by reading through it.</p>
 
@@ -97,12 +97,12 @@ export class Documentation extends Component {
 					</pre>
 				</div>
 
-				<p>Note that all additional paramters you add to the GET request must be separated with the ampersand (&).
+				<p>Note that all additional parameters you add to the GET request must be separated with the ampersand (&).
 				If a passkey is not included, the request will fail.</p>
 								
 				<h2>Limit</h2>
 				<hr/>
-				<p>You can use the limit paramater as an optional paramater to limit the number of log entries returned. The limit parameter must be a whole number.</p>
+				<p>You can use the limit parameter as an optional parameter to limit the number of log entries returned. The limit parameter must be a whole number.</p>
 				<p>For our example, we will again query the user with username "ethan", but this time we will limit the log to only 3 entries.</p>
 
 				<div className='desc-container'>
@@ -112,7 +112,7 @@ export class Documentation extends Component {
 				</div>
 
 				<p>If you remember above, the user with username "ethan" has more than 3 log entries.
-				However, since we set the limit paramater to 3, only the first 3 entries will be returned.
+				However, since we set the limit parameter to 3, only the first 3 entries will be returned.
 				Thus, our response looks like this:</p>
 
 				<div className='desc-container'>
@@ -144,7 +144,7 @@ export class Documentation extends Component {
 				<h2>From</h2>
 				<hr/>
 				<p>The from parameter is another optional parameter for filtering the GET request results.
-				This parameter limits the results to only those entries which happened after the date specificed.
+				This parameter limits the results to only those entries which happened after the date specified.
 				When using the from parameter, dates must be in the format YYYY-MM-DD.
 				If we want to query the user with username "ethan" but only return those entries after January 25th, 2017, then our query would look like this:</p>
 
@@ -191,7 +191,7 @@ export class Documentation extends Component {
 				<h2>To</h2>
 				<hr/>
 				<p>The to parameter is another optional parameter for filtering the GET request results.
-				This parameter limits the results to only those entries which happened before the date specificed.
+				This parameter limits the results to only those entries which happened before the date specified.
 				When using the to parameter, dates must be in the format YYYY-MM-DD.
 				If we want to query the user with username "ethan" but only return those entries before January 25th, 2017, then our query would look like this:</p>
 
