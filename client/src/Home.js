@@ -27,6 +27,10 @@ export class Home extends Component {
 		this.handleExampleQuery = this.handleExampleQuery.bind(this);
 	}
 
+	componentDidMount() {
+		window.scrollTo(0,0);
+	}
+
 	//whenever the home page form SearchAPI.js changes from user input, this function
 	//updates this.state.userInput, which is then passed to the component
 	handleFormChange(userInput) {
