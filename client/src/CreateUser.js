@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Form, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Input, InputGroupAddon, InputGroupText, InputGroup, Label } from 'reactstrap';
 import './App.css';
 
 
@@ -27,18 +27,23 @@ export class CreateUser extends Component {
 	
 	render() {
 		return (
-			<div className='form-container'>
-				<Form inline id='url-form'>
-					<Input id='url-input' type="text" name='url' placeholder="Paste a link to shorten it"
-						value={this.props.userInput}
-						onChange={e => this.handleChange(e)}							
-					/>
-					<Button id='inline-button' color='primary' value="POST URL" 
-						onClick={this.handleClick}
-					>
-						SHORTEN
-					</Button>
-				</Form>
+			<div className='search-container'>
+
+			<FormGroup className='new-user-form'>
+
+          		<Label for='newUser'>Username</Label>
+
+				<InputGroup>
+
+				<Input type='text' id='newUser' value={this.props.userInput} onChange={e => this.handleChange(e)}/>
+
+				<InputGroupAddon addonType="append">
+					<Button color='primary' onClick={this.handleClick}>submit</Button>
+				</InputGroupAddon>
+
+				</InputGroup>
+
+			</FormGroup>
 			</div>	
 		);
 	}

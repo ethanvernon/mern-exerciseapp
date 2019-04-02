@@ -53,7 +53,11 @@ export class Header extends Component {
 						</NavItem>
 
 						<NavItem>
-							<a href='http://fromgaming.com/' target='_blank' to="/contact-us" className='padded-nav' onClick={this.closeNav} > Chat </a>
+							<Link to='/log' to="/log" className='padded-nav' onClick={this.closeNav} > Log Exercise</Link>
+						</NavItem>
+
+						<NavItem>
+							<Link to='/signup' to="/signup" className='padded-nav' onClick={this.closeNav} > Sign Up </Link>
 						</NavItem>
 					</Nav>
 				</Collapse>

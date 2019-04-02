@@ -197,8 +197,6 @@ export class Home extends Component {
 
 				<ResultPre
 					searchResult={this.state.searchResult}
-					handleFormChange={this.handleHomeFormChange}
-					userInput={this.state.userHomeInput}
 				/>
 
 				{/*<CreateUser
