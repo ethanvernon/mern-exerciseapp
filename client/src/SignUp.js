@@ -35,7 +35,7 @@ export class SignUp extends Component {
 		console.log('calling axios.post from react');
 		console.log('adding new user to database');
 
-		axios.post("/api/exercise/new-user", {
+		axios.post("/api/new-user", {
 			userName: newUser
 		}).then(response => {
 			console.log('storing result in state');

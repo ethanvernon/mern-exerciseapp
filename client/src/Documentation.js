@@ -26,7 +26,7 @@ export class Documentation extends Component {
 
 				<div className='desc-container'>
 					<pre id='desc-output'>
-						http://localhost:3000/api/exercise/log/?username=ethan
+						https://mernlog.herokuapp.com/api/log/?username=ethan
 					</pre>
 				</div>
 
@@ -80,7 +80,7 @@ export class Documentation extends Component {
 
 				<div className='desc-container'>
 					<pre id='desc-output'>
-						http://localhost:3000/api/exercise/log/?
+						https://mernlog.herokuapp.com/api/log/?
 					</pre>
 				</div>
 
@@ -93,7 +93,7 @@ export class Documentation extends Component {
 
 				<div className='desc-container'>
 					<pre id='desc-output'>
-						http://localhost:3000/api/exercise/log/?username=ethan&passkey=pq1qu7kju4
+						https://mernlog.herokuapp.com/api/log/?username=ethan&passkey=password1
 					</pre>
 				</div>
 
@@ -107,7 +107,7 @@ export class Documentation extends Component {
 
 				<div className='desc-container'>
 					<pre id='desc-output'>
-						http://localhost:3000/api/exercise/log/?username=ethan&passkey=pq1qu7kju4&limit=3
+						https://mernlog.herokuapp.com/api/log/?username=ethan&passkey=password1&limit=3
 					</pre>
 				</div>
 
@@ -150,7 +150,7 @@ export class Documentation extends Component {
 
 				<div className='desc-container'>
 					<pre id='desc-output'>
-						http://localhost:3000/api/exercise/log/?username=ethan&passkey=pq1qu7kju4&from=2017-01-25
+						https://mernlog.herokuapp.com/api/log/?username=ethan&passkey=password1&from=2017-01-25
 					</pre>
 				</div>
 
@@ -197,7 +197,7 @@ export class Documentation extends Component {
 
 				<div className='desc-container'>
 					<pre id='desc-output'>
-						http://localhost:3000/api/exercise/log/?username=ethan&passkey=pq1qu7kju4&to=2017-01-25
+						https://mernlog.herokuapp.com/api/log/?username=ethan&passkey=password1&to=2017-01-25
 					</pre>
 				</div>
 

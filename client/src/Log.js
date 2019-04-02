@@ -71,7 +71,7 @@ export class Log extends Component {
 		console.log('calling axios.post from react');
 		console.log('trying to add exercise log');
 
-		axios.post("/api/exercise/add", {
+		axios.post("/api/add", {
 			userName: this.state.logNameUserInput,
 			passkey: this.state.logPasskeyUserInput,
 			description: this.state.logDescriptionUserInput,

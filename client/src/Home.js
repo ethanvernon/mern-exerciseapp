@@ -40,7 +40,7 @@ export class Home extends Component {
 	//on home page by the component ResultPre.js
 	formGetData() {
 		//builds query from user input on home page
-		var formQuery='/api/exercise/log/?' + this.state.userInput;
+		var formQuery='/api/log/?' + this.state.userInput;
 
 		axios.get(formQuery)
 			.then(data => {
@@ -56,7 +56,7 @@ export class Home extends Component {
 	//queries are clicked 
 	handleExampleQuery(query) {
 		//builds query from example query
-		var formQuery='/api/exercise/log/?' + query;
+		var formQuery='/api/log/?' + query;
 
 		this.setState({
 			userInput: query

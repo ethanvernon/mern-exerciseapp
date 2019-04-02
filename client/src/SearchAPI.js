@@ -30,12 +30,12 @@ export class SearchAPI extends Component {
 			<div className='search-container'>
 
 
-				<Label for='home-query' id='small-screen-label'>http://localhost:3000/api/exercise/log/?</Label>
+				<Label for='home-query' id='small-screen-label'>https://mernlog.herokuapp.com/api/log/?</Label>
 
 				<InputGroup>
 
 					<InputGroupAddon addonType="prepend" id='prepend-query'>
-						<InputGroupText>http://localhost:3000/api/exercise/log/?</InputGroupText>
+						<InputGroupText>https://mernlog.herokuapp.com/api/log/?</InputGroupText>
 					</InputGroupAddon>
 
 					<Input placeholder="username=ethan" id='home-query' type='text' value={this.props.userInput} onChange={e => this.handleChange(e)}/>

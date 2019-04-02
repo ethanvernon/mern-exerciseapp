@@ -47,7 +47,7 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 
 //post request from form in for new user Home.js
-app.post('/api/exercise/new-user', function(req,res) {
+app.post('/api/new-user', function(req,res) {
 
 	//check validity of username
 	//if invalid, return err
@@ -86,7 +86,7 @@ app.post('/api/exercise/new-user', function(req,res) {
 });
 
 //post request from form for new exercise entry
-app.post('/api/exercise/add', function(req, res) {
+app.post('/api/add', function(req, res) {
 
 	//check username and passkey match
 	//check description length/type
@@ -131,7 +131,7 @@ app.post('/api/exercise/add', function(req, res) {
 });
 
 //get request for user's exercise logs
-app.get('/api/exercise/log', (req, res) => {
+app.get('/api/log', (req, res) => {
 	
 	//store route parameters
 	//http://localhost:3001/api/exercise/log?username=ethan&from=2011-01-01&to=2017-01-01&limit=2
