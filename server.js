@@ -158,6 +158,7 @@ app.get('/api/exercise/log', (req, res) => {
 	query=query.where('userName').equals(user);
 	query=query.limit(limit);
 	query=query.select({date:1, description:1, duration:1, _id:0});
+	query=query.sort({date:1});
 
 	query.exec((err, data) => {
 		if (err) throw err;	
