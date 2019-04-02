@@ -4,7 +4,6 @@ import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import {faAngleDoubleUp} from '@fortawesome/free-solid-svg-icons';
 
 
 export class Footer extends Component {
@@ -19,7 +18,7 @@ export class Footer extends Component {
 						<FontAwesomeIcon icon={ faLinkedinIn } size='2x' color='#212529' className='social-icons'/>	
 					</a>
 				</div>
-				<p>Handcrafted by © Ethan Vernon</p>	
+				<p>Handcrafted by © <a href="http://fromgaming.com/" target='_blank'>Ethan Vernon</a></p>	
 			</div>
 		);
 	}

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   Navbar,
-  NavbarBrand,
   Nav,
   NavItem,
   Collapse,

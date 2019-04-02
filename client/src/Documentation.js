@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
 import {DocumentationTitle} from './DocumentationTitle';
 import {DocumentationDescription} from './DocumentationDescription';
 import 'bootstrap/dist/css/bootstrap.min.css';
