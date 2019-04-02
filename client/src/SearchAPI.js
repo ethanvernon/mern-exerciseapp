@@ -31,7 +31,7 @@ export class SearchAPI extends Component {
 
 				 <InputGroup>
 
-					<InputGroupAddon addonType="prepend">
+					<InputGroupAddon addonType="prepend" id='prepend-query'>
 						<InputGroupText>http://localhost:3000/api/exercise/log/?</InputGroupText>
 					</InputGroupAddon>
 
