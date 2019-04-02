@@ -72,7 +72,6 @@ export class Home extends Component {
 		//builds query from user input on home page
 		var formQuery='/api/exercise/log/?' + this.state.userInput;
 
-
 		axios.get(formQuery)
 			.then(data => {
 				//handle success

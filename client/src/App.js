@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Header} from './Header';
 import {Home} from './Home';
-import {About} from './About';
+import {Documentation} from './Documentation';
 import {Footer} from './Footer';
 import {SignUp} from './SignUp';
 import {Log} from './Log';
@@ -22,7 +22,7 @@ class App extends Component {
 					<Header/>
 					<Switch>
 						<Route exact path='/' component={Home}></Route>
-						<Route exact path='/about' component={About}></Route>
+						<Route exact path='/documentation' component={Documentation}></Route>
 						<Route exact path='/signup' component={SignUp}></Route>
 						<Route exact path='/log' component={Log}></Route>
 					</Switch>

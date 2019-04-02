@@ -143,7 +143,7 @@ app.get('/api/exercise/log', (req, res) => {
 	var user=req.query.username;
 	var password=req.query.passkey;
 	var fromDate=(req.query.from) ? Date.parse(req.query.from) : null;
-	var toDate=(req.query.from) ? Date.parse(req.query.to) : null;
+	var toDate=(req.query.to) ? Date.parse(req.query.to) : null;
 	var limit=parseInt(req.query.limit);
 
 	var query = Logs.find();
@@ -161,7 +161,8 @@ app.get('/api/exercise/log', (req, res) => {
 
 	query.exec((err, data) => {
 		if (err) throw err;	
-		res.send(data);;
+		//var dataResponse=JSON.parse(data);
+		res.json(data);
 	});
 
 /*
