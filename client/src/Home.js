@@ -65,6 +65,9 @@ export class Home extends Component {
 		});
 	}
 
+	//when the form on the home page is submitted, this function sends a GET request
+	//and then assigns the result to this.state.searchResult which is rendered
+	//on home page by the component ResultPre.js
 	formGetData() {
 		//builds query from user input on home page
 		var formQuery='/api/exercise/log/?' + this.state.userInput;
@@ -83,8 +86,8 @@ export class Home extends Component {
 			});
 	}
 
-	// our put method that uses our backend api
-	// to create new query into our data base
+	// this takes the username from this.state.userInput and builds a new user
+	//in the database
 	putDataToDb() {
 
 		var newUser = this.state.userInput;
@@ -101,8 +104,8 @@ export class Home extends Component {
 		});
 	}
 
-	// our put method that uses our backend api
-	// to create new query into our data base
+	// this takes input from various form data stored in relevant states and then
+	// sends a post request to try and add the info as an exercise log
 	putLogToDb() {
 
 		console.log('calling axios.post from react');
@@ -122,22 +125,30 @@ export class Home extends Component {
 		});
 	}
 
+	// this is a simple callback console.log for testing purposes
+	// it logs the response from a log attempt in putLogToDb()
 	callbackLog(response) {
 		console.log(response.data);
 	}
 
+	//whenever the home page form SearchAPI.js changes from user input, this function
+	//updates this.state.userInput, which is then passed to the component
 	handleFormChange(userInput) {
 		this.setState({
 			userInput: userInput
 		});
 	}
 
+	//this function updates this.state.userHomeInput whenever the form in CreateUser.js
+	//changes. the state is then passed to the component to update form text
 	handleHomeFormChange(userInput) {
 		this.setState({
 			userHomeInput: userInput
 		})
 	}
 
+	//this function updates various states whenever the forms in CreateNewLog.js
+	//changes. the state is then passed to the component to update form texts
 	handleLogFormChange(userInput, field) {
 		switch(field) {
 			case 'user':
