@@ -76,11 +76,12 @@ export class Documentation extends Component {
 					</pre>
 				</div>
 
-				<p>If your response looks slightly different don't panic. This is probably because have changed slightly since making this documentation.</p>
+				<p>If your response looks slightly different don't panic. This is probably because the API has has changed slightly since making this documentation.</p>
 								
 				<h2>Base URL</h2>
 				<hr/>
-				<p>The Base URL is the root URL for all of the API, if you ever make a request to MERN Exercise Log API and you get back a 404 NOT FOUND response then check the Base URL first.</p>
+				<p>The Base URL is the root URL for all of the API.
+				If you ever make a request to MERN Exercise Log API and you get back a 404 NOT FOUND response then check the Base URL first.</p>
 				<p>The Base URL for the MERN Exercise Log API:</p>
 
 				<div className='desc-container'>
@@ -144,7 +145,7 @@ export class Documentation extends Component {
 					</pre>
 				</div>
 
-				<p>If your response looks slightly different don't panic. This is probably because have changed slightly since making this documentation.</p>
+				<p>If your response looks slightly different don't panic. This is probably because the API has has changed slightly since making this documentation.</p>
 								
 				<h2>From</h2>
 				<hr/>
@@ -191,7 +192,7 @@ export class Documentation extends Component {
 					</pre>
 				</div>
 
-				<p>If your response looks slightly different don't panic. This is probably because have changed slightly since making this documentation.</p>
+				<p>If your response looks slightly different don't panic. This is probably because the API has has changed slightly since making this documentation.</p>
 								
 				<h2>To</h2>
 				<hr/>
