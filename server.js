@@ -1,6 +1,6 @@
 
 const bodyParser = require("body-parser");
-const cors = require('cors');
+const cors = require("cors");
 const Users = require("./data");
 const Logs = require("./logs");
 const express = require("express");
@@ -8,14 +8,14 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const router = express.Router();
 
-require('dotenv').config();
+require("dotenv").config();
 
 const app = express();
 const API_PORT = process.env.PORT || 3001;
 
 
 //other imports
-const path = require('path');
+const path = require("path");
 
 //other app.use middleware
 app.use(express.static(path.join(__dirname, "client", "build")));
@@ -47,7 +47,7 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 
 //post request from form in for new user Home.js
-app.post('/api/new-user', function(req,res) {
+app.post("/api/new-user", function(req,res) {
 
 	//check validity of username
 	//if invalid, return err
@@ -59,7 +59,7 @@ app.post('/api/new-user', function(req,res) {
 	var newUser=req.body.userName;
 
 	if (newUser.length > 15) {
-		res.send({error: 'username too long'});
+		res.send({error: "username too long"});
 	}
 
 	var findExistingUser=Users.findOne(
@@ -79,14 +79,14 @@ app.post('/api/new-user', function(req,res) {
 			console.log("error to databse: " + err);
 			return res.json({ success: false, error: err });
         }
-        console.log('success, response is: ' + response);
+        console.log("success, response is: " + response);
         return res.send(response);
       });
 	});
 });
 
 //post request from form for new exercise entry
-app.post('/api/add', function(req, res) {
+app.post("/api/add", function(req, res) {
 
 	//check username and passkey match
 	//check description length/type
@@ -100,17 +100,17 @@ app.post('/api/add', function(req, res) {
 	var duration=req.body.duration;
 	var date=Date.parse(req.body.date);
 
-	console.log('checking for user with id: ' + user + ' and passkey: ' + password);
+	console.log("checking for user with id: " + user + " and passkey: " + password);
 
 	var checkUserAndPass=Users.findOne(
 			{userName: user,
 			passkey:password}
 	).then(function(data) {
 		if (!data) {
-			return res.send({error: 'invalid username/password combination'});
+			return res.send({error: "invalid username/password combination"});
 		}
 		
-		console.log('username and password checks out');
+		console.log("username and password checks out");
 
 		var newExerciseEntry = new Logs({
 			userName:user,
@@ -119,7 +119,7 @@ app.post('/api/add', function(req, res) {
 			date: date
 		});
 
-		console.log('created new Logs document');
+		console.log("created new Logs document");
 
 		newExerciseEntry.save((err, response) => {
 			if (err) {
@@ -131,7 +131,7 @@ app.post('/api/add', function(req, res) {
 });
 
 //get request for user's exercise logs
-app.get('/api/log', (req, res) => {
+app.get("/api/log", (req, res) => {
 	
 	//store route parameters
 	//http://localhost:3001/api/exercise/log?username=ethan&from=2011-01-01&to=2017-01-01&limit=2
@@ -149,13 +149,13 @@ app.get('/api/log', (req, res) => {
 	var query = Logs.find();
 
 	if (fromDate) {
-		query=query.where('date').gt(fromDate);
+		query=query.where("date").gt(fromDate);
 	}
 	if (toDate) {
-		query=query.where('date').lt(toDate);
+		query=query.where("date").lt(toDate);
 	}
 
-	query=query.where('userName').equals(user);
+	query=query.where("userName").equals(user);
 	query=query.limit(limit);
 	query=query.select({date:1, description:1, duration:1, _id:0});
 	query=query.sort({date:1});
@@ -193,7 +193,7 @@ app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
 
 //generates string of random letter a-z of string_length
 function generate_random_string(string_length){
-    let random_string = '';
+    let random_string = "";
     let random_ascii;
     for(let i = 0; i < string_length; i++) {
         random_ascii = Math.floor((Math.random() * 25) + 97);
