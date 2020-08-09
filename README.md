@@ -1,4 +1,4 @@
-# NASA Meteorite Landing Web Service
+# MERN Exercise APP
 
 ### Summary
 This project uses Mongoose, MongoDB, Express, Node, HTML, CSS, Bootstrap, React Router, and React.js. It lets users access and save exercise logs via API or the website. It is available here: https://mernlog.herokuapp.com/
